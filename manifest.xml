@@ -1,0 +1,15 @@
+<package>
+  <description brief="sonar_override">
+
+     sonar_override
+
+  </description>
+  <author>haroldsoh</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/sonar_override</url>
+  <depend package="rospy"/>
+
+</package>
+
+
