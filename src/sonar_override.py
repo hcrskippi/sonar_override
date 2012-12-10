@@ -48,7 +48,7 @@ def main():
     rospy.init_node('sonarOverride', anonymous=False)
     rospy.Subscriber("sonar_step_detect", String, sonarCallback)
     rospy.Subscriber("joystick_cmd_vel", Twist, joystickCallback)
-    rospy.Subscriber("", Float64, gpsCallback)
+    rospy.Subscriber("GPSDistance", Float64, gpsCallback)
     rospy.spin()
 
 if __name__ == '__main__':
