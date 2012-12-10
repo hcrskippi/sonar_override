@@ -24,15 +24,15 @@ def joystickCallback(data):
     combinedCallback()
     #pub.publish(joystick_data)
 
-def gpsCallback(data);
+def gpsCallback(data):
     global multiplier = 1;
-	if (data == 0) 
+	if (data == 0) :
 		multiplier= 0
-	elif (data < 2)
+	elif (data < 2):
 		multiplier = 0.25
-	elif (data < 5)
+	elif (data < 5):
 		multiplier = 0.5 
-	elif (data <10) 
+	elif (data <10) :
 		multiplier = 1
 	combinedCallback()
 
