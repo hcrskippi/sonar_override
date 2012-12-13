@@ -25,21 +25,26 @@ def joystickCallback(data):
     #pub.publish(joystick_data)
 
 def gpsCallback(data):
-    global multiplier = 1;
-	if (data == 0) :
-		multiplier= 0
-	elif (data < 2):
-		multiplier = 0.25
-	elif (data < 5):
-		multiplier = 0.5 
-	elif (data <10) :
-		multiplier = 1
-	combinedCallback()
+    global multiplier
+    multiplier = 1
+    if (data.data == 0) :
+	multiplier= 0
+    elif (data.data < 2):
+	multiplier = 0.25
+    elif (data.data < 5):
+	multiplier = 0.5 
+    elif (data.data <10) :
+    	multiplier = 1
+
+    combinedCallback()
 
 def combinedCallback():
     global joystick_data
     global sonar_data
-    joystick_output = multiplier*joystick_data
+    joystick_output = joystick_data
+    if joystick_data == None:
+	return
+    joystick_output.linear.x = multiplier*joystick_data.linear.x
     if ((sonar_data[0] == '1' or sonar_data[1] == '1') and joystick_data.linear.x > 0) or ((sonar_data[2] == '1' or sonar_data[3] == '1') and joystick_data.linear.x < 0):
         joystick_output.linear.x = 0
     pub.publish(joystick_output)
